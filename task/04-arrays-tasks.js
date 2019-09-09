@@ -23,7 +23,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-   throw new Error('Not implemented');
+   return arr.indexOf(value);
 }
 
 /**
@@ -38,7 +38,12 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   throw new Error('Not implemented');
+   const arr = new Array(len);
+   console.log(arr);
+   arr.fill(1);
+   const OddArr = arr.map(function(num, index){
+   return num*(index*2 + 1)});
+   return OddArr;
 }
 
 
@@ -54,7 +59,7 @@ function generateOdds(len) {
  *    [] => [] 
  */
 function doubleArray(arr) {
-   throw new Error('Not implemented');
+   return arr.concat(arr);
 }
 
 
@@ -70,7 +75,10 @@ function doubleArray(arr) {
  *    [] => [] 
  */
 function getArrayOfPositives(arr) {
-   throw new Error('Not implemented');
+   const PositiveArr = arr.filter(function(element){
+    return element >= 0;
+   });
+   return PositiveArr;
 }
 
 /**
@@ -85,7 +93,10 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-   throw new Error('Not implemented');
+  const StringArr = arr.filter(function(element){
+    return typeof element == 'string';
+  })
+   return StringArr;
 }
 
 /**
@@ -102,7 +113,10 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-   throw new Error('Not implemented');
+   const NewArr = arr.filter(function(element){
+    return new Boolean(element) == true;
+   });
+   return NewArr;
 }
 
 /**
@@ -116,7 +130,10 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-   throw new Error('Not implemented');
+  const UpperCaseArr = arr.map(function(value){
+    return value = value.toUpperCase();
+  });
+   return UpperCaseArr;
 }
 
 
@@ -131,7 +148,10 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-   throw new Error('Not implemented');
+   const StrLengthArr = arr.map(function(value){
+    return value = value.length;
+  });
+   return StrLengthArr;
 }
 
 /**
@@ -146,7 +166,8 @@ function getStringsLength(arr) {
  *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-   throw new Error('Not implemented');
+   arr.splice(index, 0, item);
+   return arr;
 }
 
 /**
@@ -160,7 +181,8 @@ function insertItem(arr, item, index) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
  */
 function getHead(arr, n) {
-   throw new Error('Not implemented');
+  const NewArr = arr.slice(0, n); 
+  return NewArr;
 }
 
 
