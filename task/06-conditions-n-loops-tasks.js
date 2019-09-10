@@ -42,7 +42,8 @@ function getFizzBuzz(num) {
     {
         return "Buzz";
     }
-    else return val;
+    else 
+        return val;
 }
 
 
