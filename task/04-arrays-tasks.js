@@ -197,7 +197,9 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-   throw new Error('Not implemented');
+   arr.reverse();
+   SlicedArr = arr.slice(0, n)
+   return SlicedArr.reverse();;
 }
 
 
@@ -237,7 +239,10 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-   throw new Error('Not implemented');
+   SquareArr = arr.map(function(value){
+    return value = Math.pow(value, 2);
+   });
+   return SquareArr;
 }
 
 
