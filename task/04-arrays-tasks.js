@@ -197,9 +197,8 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-   arr.reverse();
-   SlicedArr = arr.slice(0, n)
-   return SlicedArr.reverse();;
+   SlicedArr = arr.slice(-n);
+   return SlicedArr;
 }
 
 
@@ -224,7 +223,8 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-   throw new Error('Not implemented');
+   CSVArr = arr.join('\n');
+   return CSVArr;
 }
 
 /**
@@ -261,7 +261,11 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-   throw new Error('Not implemented');
+  let sum = 0;
+   const MovinfSumArr = arr.map(function(value){
+    return sum = sum + value;
+   });
+   return MovinfSumArr;
 }
 
 /**
@@ -276,7 +280,10 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   throw new Error('Not implemented');
+   const SecondItemArr = arr.filter(function(num, index){
+    return index%2 != 0;
+   });
+   return SecondItemArr;
 }
 
 
@@ -313,7 +320,11 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+  arr.sort(function(a, b) {
+        return a - b;
+    });
+    TopPositiveArr = arr.slice(-3);
+    return TopPositiveArr;
 }
  
  
@@ -331,7 +342,10 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   const PositiveNumberArr = arr.filter(function(number){
+    return number > 0;
+   }).length;
+   return PositiveNumberArr;
 }
  
 /** 
@@ -364,7 +378,11 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   let sum = 0;
+   arr.map(function(value){
+    return sum = sum + value;
+   });
+   return sum;
 }
  
 /** 
