@@ -30,7 +30,19 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (val%3 == 0 && val%5 == 0)
+    {
+        return "FizzBuzz";
+    }
+    else if (val%3 == 0)
+    {
+        return "Fizz";
+    }
+    else if (val%5 == 0)
+    {
+        return "Buzz";
+    }
+    else return val;
 }
 
 
