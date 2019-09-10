@@ -30,20 +30,20 @@
  *
  */
 function getFizzBuzz(num) {
-    if (val%3 == 0 && val%5 == 0)
+    if (num%3 == 0 && num%5 == 0)
     {
         return "FizzBuzz";
     }
-    else if (val%3 == 0)
+    else if (num%3 == 0)
     {
         return "Fizz";
     }
-    else if (val%5 == 0)
+    else if (num%5 == 0)
     {
         return "Buzz";
     }
     else 
-        return val;
+        return num;
 }
 
 
