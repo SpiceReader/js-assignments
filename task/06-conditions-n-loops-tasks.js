@@ -59,7 +59,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    if (n != 1)
+    {
+        return n * getFactorial(n-1);
+    }
+    else
+       return 1;
 }
 
 
@@ -76,7 +81,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    let Product = 1;
+    for (let i = n1; i<n2+1; i++)
+    {
+        Product = Product * i;
+    }
+    return Product;
 }
 
 
@@ -95,7 +105,19 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    if (a + b < c)
+    {
+        return false;
+    }
+    else if (b + c < a)
+    {
+        return false;
+    }
+    else if (a + c < b){
+        return false;
+    }
+    else
+        return true;
 }
 
 
@@ -179,7 +201,21 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    let cond = true;
+    for (var i = 0; i < str.length; i++) {
+      for (var n = 0; n < str.length; n++) {
+        if (str[i] == str[n] && i != n)
+        {
+            cond = false;
+        }
+      }
+      if (cond == true)
+      {
+        return str[i];
+      }
+      cond = true;
+    }
+    return null;  
 }
 
 
@@ -205,7 +241,28 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    if (a > b) 
+    {
+        let temp = a;
+        a = b;
+        b = temp;
+    } 
+    if(isStartIncluded && isEndIncluded) 
+    {
+        return '[ ' + a + ', ' + b + ']';
+    } 
+    else if(isStartIncluded && !isEndIncluded) 
+    {
+        return '[ ' + a + '; ' + b + ')';
+    } 
+    else if(!isStartIncluded && isEndIncluded) 
+    {
+        return '( ' + a + '; ' + b + ']';
+    } 
+    else 
+    {
+        return '( ' + a + '; ' + b + ')';
+    }
 }
 
 
@@ -222,7 +279,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    return str.split('').reverse().join('');   
 }
 
 
