@@ -296,7 +296,8 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    str = num.toString();
+    return str.split("").reverse().join("");
 }
 
 
@@ -321,7 +322,31 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    let IntArr = ccn.toString().split("").map(function(value){
+        return parseInt(value);
+    });
+    for (let i = 0; i < IntArr.length; i++)
+    {
+        if (i%2 != 0)
+        {
+            IntArr[i] = IntArr[i] * 2;
+        }
+    }
+    IntArr = IntArr.join('');
+    IntArr = IntArr.toString().split("").map(function(value){
+        return parseInt(value);
+    });
+    let sum = 0;
+    for (let i = 0; i < IntArr.length; i++)
+    {
+        sum = sum + IntArr[i];
+    }
+    if (sum%10 == 0)
+    {
+        return true;
+    }
+    else
+        return false;
 }
 
 
@@ -340,7 +365,26 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    var NumArr = num.toString().split("").map(function(value){
+        return parseInt(value);
+    });
+    var sum = 0;
+    for (var i = 0; i < NumArr.length; i++) 
+    {
+        sum = sum + NumArr[i];
+    }
+    while (sum > 9)
+    {
+        let NumArr = sum.toString().split("").map(function(value){
+            return parseInt(value);
+        });
+        sum = 0;
+        for (i = 0; i < NumArr.length; i++) {
+            sum = sum + NumArr[i];
+        }
+        
+    }
+    return sum;
 }
 
 
@@ -366,7 +410,74 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+    let count1 = 0;
+    let count2 = 0;   
+    for (var i = 0; i < str.length; i++) 
+    {
+        if ( str[i] == '[')
+        {
+            count1 = count1 + 1;
+        }
+        if ( str[i] == ']')
+        {
+            count2 = count2 + 1;
+            if (count2 > count1)
+            {
+                return false;
+            }
+        }
+    }
+    for (var i = 0; i < str.length; i++) 
+    {
+        if ( str[i] == '{')
+        {
+            count1 = count1 + 1;
+        }
+        if ( str[i] == '}')
+        {
+            count2 = count2 + 1;
+            if (count2 > count1)
+            {
+                return false;
+            }
+        }
+    }
+    for (var i = 0; i < str.length; i++) 
+    {
+        if ( str[i] == '(')
+        {
+            count1 = count1 + 1;
+        }
+        if ( str[i] == ')')
+        {
+            count2 = count2 + 1;
+            if (count2 > count1)
+            {
+                return false;
+            }
+        }
+    }
+    for (var i = 0; i < str.length; i++) 
+    {
+        if ( str[i] == '<')
+        {
+            count1 = count1 + 1;
+        }
+        if ( str[i] == '>')
+        {
+            count2 = count2 + 1;
+            if (count2 > count1)
+            {
+                return false;
+            }
+        }
+    }
+    if (count1 == count2)
+    {
+        return true;
+    }
+    else
+        return false;
 }
 
 
@@ -426,7 +537,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    return num.toString(n);
 }
 
 
