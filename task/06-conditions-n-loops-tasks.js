@@ -154,7 +154,33 @@ function isTriangle(a,b,c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    throw new Error('Not implemented');
+    let cond1 = false;
+    if (rect1.top + rect1.height > rect2.top
+        && rect1.left + rect1.width > rect2.left)
+    {
+        if (rect2.top > rect1.top
+            && rect2.left > rect1.left)
+        {
+            cond1 = true;
+        }
+    }
+
+    if (rect2.top + rect2.height > rect1.top
+        && rect2.left + rect2.width > rect1.left)
+    {
+        if (rect1.top > rect2.top
+            && rect1.left > rect2.left)
+        {
+            cond1 = true;
+        }
+    }
+    
+    if (cond1)
+    {
+        return true;
+    }
+    else
+        return false;
 }
 
 
@@ -185,7 +211,18 @@ function doRectanglesOverlap(rect1, rect2) {
  *   
  */
 function isInsideCircle(circle, point) {
-    throw new Error('Not implemented');
+    if ( circle.center.x + circle.radius > Math.abs(point.x)
+        && circle.center.y + circle.radius > Math.abs(point.y))
+    {
+        return true;
+    }
+    else if ( Math.abs(circle.center.x - circle.radius) > Math.abs(point.x)
+        && Math.abs(circle.center.y - circle.radius) > Math.abs(point.y))
+    {
+        return true;
+    }
+    else
+        return false;
 }
 
 
@@ -513,7 +550,58 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
+    const date = (endDate - startDate)/1000;
+    //console.log(date);
+    if (date < 45)
+    {
+        return 'a few seconds ago';
+    }
+    if ( 45 <= date && date < 90)
+    {
+        return 'a minute ago';
+    }
+    if ( 90 <= date && date < 45*60)
+    {
+        const t = Math.round(date/60);
+        return 'a '+ t +' minutes ago';
+    }
+    if ( 45*60 <= date && date < 90*60)
+    {
+        return 'an hour ago';
+    }
+    if ( 90*60 <= date && date < 22*60*60)
+    {
+        const t = Math.round(date/3600);
+        return 'an ' + t + ' hour ago';
+    }
+    if ( 22*60*60 <= date && date < 36*60*60)
+    {
+        return 'a days ago';
+    }
+    if ( 36*60*60 < date && date < 25*60*60*24)
+    {
+        const t = Math.round(date/(3600*24));
+        return 'days ago ' + t + ' days ago';
+    }
+    if ( 25*60*60*24 <= date && date < 45*60*60*24)
+    {
+        return 'a month ago';
+    }
+    if ( 45*60*60*24 <= date && date < 345*60*60*24)
+    {
+        const t = Math.round(date/(3600*24*31));
+        return 'a ' + t + ' months ago';
+    }
+    if ( 345*60*60*24 <= date && date < 545*60*60*24)
+    {
+        return 'a year ago';
+    }
+    if ( 545*60*60*24 <= date)
+    {
+        const t = Math.round(date/(3600*24*31*12));
+        return 'a ' + t + ' years ago';
+    }
+    return undefined;
 }
 
 
@@ -554,7 +642,26 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-    throw new Error('Not implemented');
+    const directory = pathes[0];
+    console.log(directory);
+    let index = 0;
+    let common = '';
+    for (var i = 0; i < pathes.length; i++) {
+        for (var n = 0; n < directory.length; n++) {
+            if (pathes[i][n] != directory[n])
+            {
+                common = directory.substr(0, n);
+                break;
+            }
+        }
+    }
+    for (var i = 0; i < common.length; i++) {
+        if (common[i] == '/')
+        {
+            index = i;
+        }
+    }
+    return common.substr(0,index+1); 
 }
 
 
@@ -612,7 +719,39 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    throw new Error('Not implemented');
+    for (var i = 0; i<3; i++)
+    {
+        if ((position[i][0] == position[i][1] == position[i][2]) == 'X')
+        {
+            return position[i][0];
+        }
+        if ((position[i][0] == position[i][1] == position[i][2]) == '0')
+        {
+            return position[i][0];
+        }
+    }
+    for (var i = 0; i<3; i++)
+    {
+        if ((position[0][i] == position[1][i] == position[2][i]) == 'X')
+        {
+            return 'X';
+        }
+        if ((position[0][i] == position[1][i] == position[2][i]) == '0')
+        {
+            return '0';
+        }
+    }
+    if ( (position[0][0] == position[1][1] == position[2][2]) == 'X'
+        || (position[0][0] == position[1][1] == position[2][2]) == '0')
+    {
+        return position[1][1];
+    }
+    if ( (position[0][2] == position[1][1] == position[2][0] )== 'X'
+        || (position[0][2] == position[1][1] == position[2][0]) == '0')
+    {
+        return position[1][1];
+    }
+    return undefined;
 }
 
 
