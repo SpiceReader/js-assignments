@@ -551,7 +551,6 @@ function isBracketsBalanced(str) {
  */
 function timespanToHumanString(startDate, endDate) {
     const date = (endDate - startDate)/1000;
-    //console.log(date);
     if (date < 45)
     {
         return 'a few seconds ago';
@@ -684,7 +683,26 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    throw new Error('Not implemented');
+    let ProductMatrix = new Array(m1.length);
+    c = m1[0].length;
+
+    for (var i = 0; i < m1.length; i++) {
+        ProductMatrix[i] = new Array(m2[0].length)
+    }
+    
+    var sum = 0;
+    for (var i = 0; i < m1.length; i++) {
+        for (var n = 0; n < m2[0].length; n++) {
+            for (var m = 0; m < c; m++) {
+                sum = (m1[i][m] * m2[m][n]) + sum;
+            }
+
+            ProductMatrix[i][n] = sum;
+            console.log(sum);
+            sum = 0;
+        }
+    }
+    return ProductMatrix;
 }
 
 
