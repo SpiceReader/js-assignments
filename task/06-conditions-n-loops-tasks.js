@@ -105,15 +105,16 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    if (a + b < c)
+    if (a + b <= c)
     {
         return false;
     }
-    else if (b + c < a)
+    else if (b + c <= a)
     {
         return false;
     }
-    else if (a + c < b){
+    else if (a + c <= b)
+    {
         return false;
     }
     else
@@ -158,8 +159,8 @@ function doRectanglesOverlap(rect1, rect2) {
     if (rect1.top + rect1.height > rect2.top
         && rect1.left + rect1.width > rect2.left)
     {
-        if (rect2.top > rect1.top
-            && rect2.left > rect1.left)
+        if (rect2.top >= rect1.top
+            && rect2.left >= rect1.left)
         {
             cond1 = true;
         }
@@ -168,8 +169,8 @@ function doRectanglesOverlap(rect1, rect2) {
     if (rect2.top + rect2.height > rect1.top
         && rect2.left + rect2.width > rect1.left)
     {
-        if (rect1.top > rect2.top
-            && rect1.left > rect2.left)
+        if (rect1.top >= rect2.top
+            && rect1.left >= rect2.left)
         {
             cond1 = true;
         }
