@@ -81,12 +81,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    let Product = 1;
+    let sum = 0;
     for (let i = n1; i<n2+1; i++)
     {
-        Product = Product * i;
+        sum = sum + i;
     }
-    return Product;
+    return sum;
 }
 
 
