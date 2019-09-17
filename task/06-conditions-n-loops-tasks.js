@@ -334,8 +334,9 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    str = num.toString();
-    return str.split("").reverse().join("");
+    const str = num.toString();
+    const ReverseNum = parseInt(str.split("").reverse().join(""));
+    return ReverseNum;
 }
 
 
@@ -459,11 +460,11 @@ function isBracketsBalanced(str) {
         if ( str[i] == ']')
         {
             count2 = count2 + 1;
-            if (count2 > count1)
-            {
-                return false;
-            }
         }
+    }
+    if (count1 != count2)
+    {
+        return false;
     }
     for (var i = 0; i < str.length; i++) 
     {
@@ -474,11 +475,11 @@ function isBracketsBalanced(str) {
         if ( str[i] == '}')
         {
             count2 = count2 + 1;
-            if (count2 > count1)
-            {
-                return false;
-            }
         }
+    }
+    if (count1 != count2)
+    {
+        return false;
     }
     for (var i = 0; i < str.length; i++) 
     {
@@ -489,27 +490,8 @@ function isBracketsBalanced(str) {
         if ( str[i] == ')')
         {
             count2 = count2 + 1;
-            if (count2 > count1)
-            {
-                return false;
-            }
         }
-    }
-    for (var i = 0; i < str.length; i++) 
-    {
-        if ( str[i] == '<')
-        {
-            count1 = count1 + 1;
-        }
-        if ( str[i] == '>')
-        {
-            count2 = count2 + 1;
-            if (count2 > count1)
-            {
-                return false;
-            }
-        }
-    }
+    }    
     if (count1 == count2)
     {
         return true;
@@ -552,51 +534,51 @@ function isBracketsBalanced(str) {
  */
 function timespanToHumanString(startDate, endDate) {
     const date = (endDate - startDate)/1000;
-    if (date < 45)
+    if (date <= 45)
     {
         return 'a few seconds ago';
     }
-    if ( 45 <= date && date < 90)
+    if ( 45 < date && date <= 90)
     {
         return 'a minute ago';
     }
-    if ( 90 <= date && date < 45*60)
+    if ( 90 < date && date <= 45*60)
     {
         const t = Math.round(date/60);
         return 'a '+ t +' minutes ago';
     }
-    if ( 45*60 <= date && date < 90*60)
+    if ( 45*60 < date && date <= 90*60)
     {
         return 'an hour ago';
     }
-    if ( 90*60 <= date && date < 22*60*60)
+    if ( 90*60 < date && date <= 22*60*60)
     {
         const t = Math.round(date/3600);
         return 'an ' + t + ' hour ago';
     }
-    if ( 22*60*60 <= date && date < 36*60*60)
+    if ( 22*60*60 < date && date <= 36*60*60)
     {
         return 'a days ago';
     }
-    if ( 36*60*60 < date && date < 25*60*60*24)
+    if ( 36*60*60 < date && date <= 25*60*60*24)
     {
         const t = Math.round(date/(3600*24));
         return 'days ago ' + t + ' days ago';
     }
-    if ( 25*60*60*24 <= date && date < 45*60*60*24)
+    if ( 25*60*60*24 < date && date <= 45*60*60*24)
     {
         return 'a month ago';
     }
-    if ( 45*60*60*24 <= date && date < 345*60*60*24)
+    if ( 45*60*60*24 < date && date <= 345*60*60*24)
     {
         const t = Math.round(date/(3600*24*31));
         return 'a ' + t + ' months ago';
     }
-    if ( 345*60*60*24 <= date && date < 545*60*60*24)
+    if ( 345*60*60*24 < date && date <= 545*60*60*24)
     {
         return 'a year ago';
     }
-    if ( 545*60*60*24 <= date)
+    if ( 545*60*60*24 < date)
     {
         const t = Math.round(date/(3600*24*31*12));
         return 'a ' + t + ' years ago';
@@ -685,7 +667,7 @@ function getCommonDirectoryPath(pathes) {
  */
 function getMatrixProduct(m1, m2) {
     let ProductMatrix = new Array(m1.length);
-    c = m1[0].length;
+    let c = m1[0].length;
 
     for (var i = 0; i < m1.length; i++) {
         ProductMatrix[i] = new Array(m2[0].length)
@@ -740,33 +722,33 @@ function getMatrixProduct(m1, m2) {
 function evaluateTicTacToePosition(position) {
     for (var i = 0; i<3; i++)
     {
-        if ((position[i][0] == position[i][1] == position[i][2]) == 'X')
+        if (position[i][0] == position[i][1] && position[i][1] == position[i][2])
         {
-            return position[i][0];
+            return position[i][1];
         }
-        if ((position[i][0] == position[i][1] == position[i][2]) == '0')
+        else if (position[i][0] == position[i][1] && position[i][1] == position[i][2])
         {
-            return position[i][0];
+            return position[i][1];
         }
     }
     for (var i = 0; i<3; i++)
     {
-        if ((position[0][i] == position[1][i] == position[2][i]) == 'X')
+        if (position[0][i] == position[1][i] && position[1][i] == position[2][i])
         {
-            return 'X';
+            return position[1][i];
         }
-        if ((position[0][i] == position[1][i] == position[2][i]) == '0')
+        else if (position[0][i] == position[1][i] && position[1][i] == position[2][i])
         {
-            return '0';
+            return position[1][i];
         }
     }
-    if ( (position[0][0] == position[1][1] == position[2][2]) == 'X'
-        || (position[0][0] == position[1][1] == position[2][2]) == '0')
+    if ( (position[0][0] == position[1][1] && position[1][1] == position[2][2])
+        || (position[0][0] == position[1][1] && position[1][1] == position[2][2]))
     {
         return position[1][1];
     }
-    if ( (position[0][2] == position[1][1] == position[2][0] )== 'X'
-        || (position[0][2] == position[1][1] == position[2][0]) == '0')
+    if ( (position[0][2] == position[1][1] && position[1][1] == position[2][0] )
+        || (position[0][2] == position[1][1] && position[1][1] == position[2][0]) )
     {
         return position[1][1];
     }
