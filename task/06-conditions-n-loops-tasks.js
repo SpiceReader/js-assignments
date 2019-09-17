@@ -291,15 +291,15 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     } 
     else if(isStartIncluded && !isEndIncluded) 
     {
-        return '[' + a + '; ' + b + ')';
+        return '[' + a + ', ' + b + ')';
     } 
     else if(!isStartIncluded && isEndIncluded) 
     {
-        return '(' + a + '; ' + b + ']';
+        return '(' + a + ', ' + b + ']';
     } 
     else 
     {
-        return '(' + a + '; ' + b + ')';
+        return '(' + a + ', ' + b + ')';
     }
 }
 
@@ -545,7 +545,7 @@ function timespanToHumanString(startDate, endDate) {
     if ( 90 < date && date <= 45*60)
     {
         const t = Math.round(date/60);
-        return 'a '+ t +' minutes ago';
+        return  t +' minutes ago';
     }
     if ( 45*60 < date && date <= 90*60)
     {
@@ -554,16 +554,16 @@ function timespanToHumanString(startDate, endDate) {
     if ( 90*60 < date && date <= 22*60*60)
     {
         const t = Math.round(date/3600);
-        return 'an ' + t + ' hour ago';
+        return t + ' hour ago';
     }
     if ( 22*60*60 < date && date <= 36*60*60)
     {
-        return 'a days ago';
+        return 'a day ago';
     }
     if ( 36*60*60 < date && date <= 25*60*60*24)
     {
         const t = Math.round(date/(3600*24));
-        return 'days ago ' + t + ' days ago';
+        return t + ' days ago';
     }
     if ( 25*60*60*24 < date && date <= 45*60*60*24)
     {
@@ -572,7 +572,7 @@ function timespanToHumanString(startDate, endDate) {
     if ( 45*60*60*24 < date && date <= 345*60*60*24)
     {
         const t = Math.round(date/(3600*24*31));
-        return 'a ' + t + ' months ago';
+        return t + ' months ago';
     }
     if ( 345*60*60*24 < date && date <= 545*60*60*24)
     {
@@ -581,7 +581,7 @@ function timespanToHumanString(startDate, endDate) {
     if ( 545*60*60*24 < date)
     {
         const t = Math.round(date/(3600*24*31*12));
-        return 'a ' + t + ' years ago';
+        return t + ' years ago';
     }
     return undefined;
 }
@@ -722,33 +722,31 @@ function getMatrixProduct(m1, m2) {
 function evaluateTicTacToePosition(position) {
     for (var i = 0; i<3; i++)
     {
-        if (position[i][0] == position[i][1] && position[i][1] == position[i][2])
+        if (position[i][0] == position[i][1] && position[i][1] == position[i][2] && position[i][1] != undefined)
         {
             return position[i][1];
         }
-        else if (position[i][0] == position[i][1] && position[i][1] == position[i][2])
+        else if (position[i][0] == position[i][1] && position[i][1] == position[i][2] && position[i][1] != undefined)
         {
             return position[i][1];
         }
     }
     for (var i = 0; i<3; i++)
     {
-        if (position[0][i] == position[1][i] && position[1][i] == position[2][i])
+        if (position[0][i] == position[1][i] && position[1][i] == position[2][i] && position[1][i] != undefined)
         {
             return position[1][i];
         }
-        else if (position[0][i] == position[1][i] && position[1][i] == position[2][i])
+        else if (position[0][i] == position[1][i] && position[1][i] == position[2][i] && position[1][i] != undefined)
         {
             return position[1][i];
         }
     }
-    if ( (position[0][0] == position[1][1] && position[1][1] == position[2][2])
-        || (position[0][0] == position[1][1] && position[1][1] == position[2][2]))
+    if ( position[0][0] == position[1][1] && position[1][1] == position[2][2] && position[1][1] != undefined)
     {
         return position[1][1];
     }
-    if ( (position[0][2] == position[1][1] && position[1][1] == position[2][0] )
-        || (position[0][2] == position[1][1] && position[1][1] == position[2][0]) )
+    if ( position[0][2] == position[1][1] && position[1][1] == position[2][0] && position[1][1] != undefined)
     {
         return position[1][1];
     }
