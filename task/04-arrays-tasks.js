@@ -197,7 +197,7 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-   SlicedArr = arr.slice(-n);
+   const SlicedArr = arr.slice(-n);
    return SlicedArr;
 }
 
@@ -223,7 +223,7 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-   CSVArr = arr.join('\n');
+   const CSVArr = arr.join('\n');
    return CSVArr;
 }
 
@@ -239,7 +239,7 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-   SquareArr = arr.map(function(value){
+   const SquareArr = arr.map(function(value){
     return value = Math.pow(value, 2);
    });
    return SquareArr;
