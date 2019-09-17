@@ -287,19 +287,19 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     } 
     if(isStartIncluded && isEndIncluded) 
     {
-        return '[ ' + a + ', ' + b + ']';
+        return '[' + a + ', ' + b + ']';
     } 
     else if(isStartIncluded && !isEndIncluded) 
     {
-        return '[ ' + a + '; ' + b + ')';
+        return '[' + a + '; ' + b + ')';
     } 
     else if(!isStartIncluded && isEndIncluded) 
     {
-        return '( ' + a + '; ' + b + ']';
+        return '(' + a + '; ' + b + ']';
     } 
     else 
     {
-        return '( ' + a + '; ' + b + ')';
+        return '(' + a + '; ' + b + ')';
     }
 }
 
