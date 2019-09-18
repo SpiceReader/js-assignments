@@ -212,17 +212,13 @@ function doRectanglesOverlap(rect1, rect2) {
  *   
  */
 function isInsideCircle(circle, point) {
-    if ( circle.center.x + circle.radius > Math.abs(point.x)
-        && circle.center.y + circle.radius > Math.abs(point.y))
+    const a = Math.pow(Math.abs(circle.center.x - point.x), 2);
+    const b = Math.pow(Math.abs(circle.center.y - point.y), 2);
+    if ( Math.pow((a+b), 0.5) < circle.radius)
     {
         return true;
     }
-    else if ( Math.abs(circle.center.x - circle.radius) > Math.abs(point.x)
-        && Math.abs(circle.center.y - circle.radius) > Math.abs(point.y))
-    {
-        return true;
-    }
-    else
+    else 
         return false;
 }
 
