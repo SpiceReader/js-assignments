@@ -364,17 +364,18 @@ function isCreditCardNumber(ccn) {
     let IntArr = ccn.toString().split("").map(function(value){
         return parseInt(value);
     });
+    IntArr = IntArr.reverse();
     for (let i = 0; i < IntArr.length; i++)
     {
         if (i%2 != 0)
         {
             IntArr[i] = IntArr[i] * 2;
+            if (IntArr[i] > 9)
+            {
+                IntArr[i] = IntArr[i] - 9;
+            }
         }
     }
-    IntArr = IntArr.join('');
-    IntArr = IntArr.toString().split("").map(function(value){
-        return parseInt(value);
-    });
     let sum = 0;
     for (let i = 0; i < IntArr.length; i++)
     {
@@ -450,19 +451,22 @@ function getDigitalRoot(num) {
  */
 function isBracketsBalanced(str) {
     let count1 = 0;
-    let count2 = 0;   
+    let count2 = 0;  
+    let cond = false; 
     for (var i = 0; i < str.length; i++) 
     {
         if ( str[i] == '[')
         {
+            cond = true;
             count1 = count1 + 1;
         }
         if ( str[i] == ']')
         {
+            cond = false;
             count2 = count2 + 1;
         }
     }
-    if (count1 != count2)
+    if ((count1 != count2) || cond == true)
     {
         return false;
     }
@@ -470,14 +474,16 @@ function isBracketsBalanced(str) {
     {
         if ( str[i] == '{')
         {
+            cond = true;
             count1 = count1 + 1;
         }
         if ( str[i] == '}')
         {
+            cond = false;
             count2 = count2 + 1;
         }
     }
-    if (count1 != count2)
+    if (count1 != count2 || cond == true)
     {
         return false;
     }
@@ -485,13 +491,19 @@ function isBracketsBalanced(str) {
     {
         if ( str[i] == '(')
         {
+            cond = true;
             count1 = count1 + 1;
         }
         if ( str[i] == ')')
         {
+            cond = false;
             count2 = count2 + 1;
         }
-    }    
+    }  
+    if (cond)  
+    {
+        return false;
+    }
     if (count1 == count2)
     {
         return true;
