@@ -76,7 +76,7 @@ function doubleArray(arr) {
  */
 function getArrayOfPositives(arr) {
    const PositiveArr = arr.filter(function(element){
-    return element >= 0;
+    return element > 0;
    });
    return PositiveArr;
 }
@@ -327,7 +327,7 @@ function get3TopItems(arr) {
   arr.sort(function(a, b) {
         return a - b;
     });
-    TopPositiveArr = arr.slice(-3);
+    const TopPositiveArr = arr.slice(-3);
     return TopPositiveArr;
 }
  
@@ -347,7 +347,7 @@ function get3TopItems(arr) {
  */
 function getPositivesCount(arr) {
    const PositiveNumberArr = arr.filter(function(number){
-    return number > 0;
+    return (typeof number == 'number')  > 0;
    }).length;
    return PositiveNumberArr;
 }
@@ -366,7 +366,7 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+   const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
    const SortedArr = arr.sort(function(a, b){
     return numbers.indexOf(a) > numbers.indexOf(b) ? 1 : -1;
    });
@@ -634,8 +634,8 @@ function getElementByIndexes(arr, indexes) {
  */
 function swapHeadAndTail(arr) {
   arr = arr.join('');
-  tail = arr.substring(0, Math.floor(arr.length/2));
-  head = arr.substring(Math.round(arr.length/2), arr.length);
+  const tail = arr.substring(0, Math.floor(arr.length/2));
+  const head = arr.substring(Math.round(arr.length/2), arr.length);
   arr.length%2 != 0 
   ? t = arr.charAt(Math.floor(arr.length/2)) 
   : t = '';
