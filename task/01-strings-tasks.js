@@ -69,9 +69,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    let name = "John Doe";
-    let a = value.search(name);
-    return value.substr(a, name.length);
+    return value.slice(7, value.length - 1);
 }
 
 
@@ -203,6 +201,7 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
+    let str = '';
     for (let n = 0; n<height; n++)
     {
         for (let m = 0; m<width; m++) 
@@ -260,7 +259,7 @@ function encodeToRot13(str) {
             }
         }
     }
-    return temp;  
+    return temp.toString();  
 }
 
 /**
@@ -310,10 +309,10 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    card = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    suit = ['♣', '♦', '♥', '♠'];
-    a = card.indexOf(value.charAt(0));
-    b = suit.indexOf(value.charAt(1));
+    const card = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    const suit = ['♣', '♦', '♥', '♠'];
+    const a = card.indexOf(value.charAt(0));
+    const b = suit.indexOf(value.charAt(1));
     return a + b*13;
 }
 
