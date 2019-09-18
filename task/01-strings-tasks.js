@@ -206,13 +206,33 @@ function getRectangleString(width, height) {
     {
         for (let m = 0; m<width; m++) 
         {
-            if (n == 0 || n == height - 1)
+            if (n == 0 && m == 0)
+            {     
+                str = str + "┌";
+                continue;
+            }
+            if (n == 0 && m == width - 1)
             {
-                str = str + "-";
+                str = str + "┐";
+                continue;
+            }
+            if (n == height - 1 && m == 0)
+            {
+                str = str + "└";
+                continue;
+            }
+            if (n == height -1 && m == width - 1)
+            {
+                str = str + "┘";
+                continue;
+            }
+            if (n == 0 || n == height - 1)
+            {     
+                str = str + "─";
             }
             else if (m == 0 || m == width - 1)
             {
-                str = str + "|";
+                str = str + "│";
             }
             else 
             {
@@ -276,11 +296,11 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    if (typeof value == "string") 
+    if (typeof value === 'string' || value instanceof String) 
     {
-        return console.log("String");
+        return true;
     }
-    return console.log("not a String");
+    return false;
 }
 
 
@@ -311,9 +331,17 @@ function isString(value) {
 function getCardId(value) {
     const card = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     const suit = ['♣', '♦', '♥', '♠'];
-    const a = card.indexOf(value.charAt(0));
-    const b = suit.indexOf(value.charAt(1));
-    return a + b*13;
+    if (value.charAt(0) === '1')
+    {
+        var cardInd = card.indexOf(value.slice(0, value.length - 1));
+        var suitInd = suit.indexOf(value.charAt(2));
+    }
+    else 
+    {
+        var cardInd = card.indexOf(value.charAt(0));
+        var suitInd = suit.indexOf(value.charAt(1));
+    }
+    return cardInd + suitInd*13;
 }
 
 
