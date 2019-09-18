@@ -38,7 +38,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-    return 2*radius*3.14;
+    return 2*radius*Math.PI;
 }
 
 /**
