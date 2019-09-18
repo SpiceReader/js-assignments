@@ -327,7 +327,7 @@ function get3TopItems(arr) {
   arr.sort(function(a, b) {
         return a - b;
     });
-    const TopPositiveArr = arr.slice(-3);
+    const TopPositiveArr = arr.slice(-3).reverse();
     return TopPositiveArr;
 }
  
@@ -347,7 +347,7 @@ function get3TopItems(arr) {
  */
 function getPositivesCount(arr) {
    const PositiveNumberArr = arr.filter(function(number){
-    return (typeof number == 'number')  > 0;
+     return (typeof number == 'number') && number > 0;
    }).length;
    return PositiveNumberArr;
 }
@@ -428,7 +428,7 @@ function getFalsyValuesCount(arr) {
  */
 function findAllOccurences(arr, item) {
    const OccuranceArr = arr.filter(function(element){
-    return element == item;
+    return element === item;
     }).length;
    return OccuranceArr;
 }
@@ -636,10 +636,9 @@ function swapHeadAndTail(arr) {
   arr = arr.join('');
   const tail = arr.substring(0, Math.floor(arr.length/2));
   const head = arr.substring(Math.round(arr.length/2), arr.length);
-  arr.length%2 != 0 
-  ? t = arr.charAt(Math.floor(arr.length/2)) 
-  : t = '';
-  return head.concat(t).concat(tail);
+  return arr.length%2 != 0 
+         ? head.concat(arr.charAt(Math.floor(arr.length/2))).concat(tail) 
+         : head.concat(t).concat(tail);
 }
 
 
