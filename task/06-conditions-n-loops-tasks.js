@@ -449,6 +449,7 @@ function isBracketsBalanced(str) {
     let count1 = 0;
     let count2 = 0;  
     let cond = false; 
+    //let locked = 0;
     for (var i = 0; i < str.length; i++) 
     {
         if ( str[i] == '[')
@@ -460,9 +461,9 @@ function isBracketsBalanced(str) {
         {
             cond = false;
             count2 = count2 + 1;
-        }
+        }   
     }
-    if ((count1 != count2) || cond == true)
+    if ((count1 != count2) || cond == true )
     {
         return false;
     }
@@ -477,12 +478,13 @@ function isBracketsBalanced(str) {
         {
             cond = false;
             count2 = count2 + 1;
-        }
+        }        
     }
     if (count1 != count2 || cond == true)
     {
         return false;
     }
+    
     for (var i = 0; i < str.length; i++) 
     {
         if ( str[i] == '(')
@@ -496,17 +498,51 @@ function isBracketsBalanced(str) {
             count2 = count2 + 1;
         }
     }  
-    if (cond)  
+    if (cond == true || count1 != count2)  
     {
         return false;
     }
-    if (count1 == count2)
-    {
+    for (var i = 0; i < str.length; i++) 
+        {
+            if (str[i] == ']')
+            {
+                if (i == 0)
+                {
+                    return false;
+                }
+                if (str[i-1] != '[')
+                {
+                    return false;
+                }
+                break;
+            }
+            else if (str[i] == ')')
+            {
+                if (i == 0)
+                {
+                    return false;
+                }
+                if (str[i-1] != '(')
+                {
+                    return false;
+                }
+                break;
+            }
+            else if (str[i] == '}')
+            {
+                if (i == 0)
+                {
+                    return false;
+                }
+                if (str[i-1] != '{')
+                {
+                    return false;
+                }
+                break;
+            }
+        }
         return true;
     }
-    else
-        return false;
-}
 
 
 /**
@@ -546,43 +582,43 @@ function timespanToHumanString(startDate, endDate) {
     {
         return 'a few seconds ago';
     }
-    if ( 45 < date && date <= 90)
+    if (date <= 90)
     {
         return 'a minute ago';
     }
-    if ( 90 < date && date <= 45*60)
+    if (date <= 45*60)
     {
         const t = Math.round(date/60);
         return  t +' minutes ago';
     }
-    if ( 45*60 < date && date <= 90*60)
+    if (date <= 90*60)
     {
         return 'an hour ago';
     }
-    if ( 90*60 < date && date <= 22*60*60)
+    if (date <= 22*60*60)
     {
         const t = Math.round(date/3600);
         return t + ' hour ago';
     }
-    if ( 22*60*60 < date && date <= 36*60*60)
+    if (date <= 36*60*60)
     {
         return 'a day ago';
     }
-    if ( 36*60*60 < date && date <= 25*60*60*24)
+    if (date <= 25*60*60*24)
     {
         const t = Math.round(date/(3600*24));
         return t + ' days ago';
     }
-    if ( 25*60*60*24 < date && date <= 45*60*60*24)
+    if (date <= 45*60*60*24)
     {
         return 'a month ago';
     }
-    if ( 45*60*60*24 < date && date <= 345*60*60*24)
+    if (date <= 345*60*60*24)
     {
         const t = Math.round(date/(3600*24*31));
         return t + ' months ago';
     }
-    if ( 345*60*60*24 < date && date <= 545*60*60*24)
+    if (date <= 545*60*60*24)
     {
         return 'a year ago';
     }
