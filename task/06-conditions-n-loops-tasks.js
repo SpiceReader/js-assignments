@@ -608,7 +608,7 @@ function isBracketsBalanced(str) {
 function timespanToHumanString(startDate, endDate) {
     const date = (endDate - startDate)/1000;
     console.log(date);
-    if (date < 45)
+    if (date <= 45)
     {
         return 'a few seconds ago';
     }
