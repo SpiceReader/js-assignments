@@ -302,11 +302,11 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  const PropogateItemArr = arr.map(function(number, index){
+  let PropogateItemArr = arr.map(function(number, index){
     return new Array(index + 1).fill(number);
   });
   const str = PropogateItemArr.join();
-  return str.split(',');
+  return str[0] == null ? str.split('') : str.split(',');
 }
 
 
