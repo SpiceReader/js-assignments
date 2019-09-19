@@ -503,6 +503,23 @@ function isBracketsBalanced(str) {
         return false;
     }
     for (var i = 0; i < str.length; i++) 
+    {
+        if ( str[i] == '<')
+        {
+            cond = true;
+            count1 = count1 + 1;
+        }
+        if ( str[i] == '>')
+        {
+            cond = false;
+            count2 = count2 + 1;
+        }
+    }  
+    if (cond == true || count1 != count2)  
+    {
+        return false;
+    }
+    for (var i = 0; i < str.length; i++) 
         {
             if (str[i] == ']')
             {
@@ -523,6 +540,18 @@ function isBracketsBalanced(str) {
                     return false;
                 }
                 if (str[i-1] != '(')
+                {
+                    return false;
+                }
+                break;
+            }
+            else if (str[i] == '>')
+            {
+                if (i == 0)
+                {
+                    return false;
+                }
+                if (str[i-1] != '<')
                 {
                     return false;
                 }
