@@ -607,53 +607,55 @@ function isBracketsBalanced(str) {
  */
 function timespanToHumanString(startDate, endDate) {
     const date = (endDate - startDate)/1000;
-    if (date <= 45)
+    console.log(date);
+    if (date < 45)
     {
         return 'a few seconds ago';
     }
-    if (date <= 90)
+    if (date < 90)
     {
         return 'a minute ago';
     }
-    if (date <= 45*60)
+    if (date < 45*60)
     {
-        const t = Math.floor(date/60);
+        const t = Math.round(date/60);
         return  t +' minutes ago';
     }
-    if (date <= 90*60)
+    if (date < 90*60)
     {
         return 'an hour ago';
     }
-    if (date <= 22*60*60)
+    if (date < 22*60*60)
     {
-        const t = Math.floor(date/3600);
+        const t = Math.round(date/3600);
         return t + ' hour ago';
     }
-    if (date <= 36*60*60)
+    if (date < 36*60*60)
     {
         return 'a day ago';
     }
-    if (date <= 25*60*60*24)
+    if (date < 25*60*60*24)
     {
         const t = Math.round(date/(3600*24));
         return t + ' days ago';
     }
-    if (date <= 45*60*60*24)
+    if (date < 45*60*60*24)
     {
         return 'a month ago';
     }
-    if (date <= 345*60*60*24)
+    if (date < 345*60*60*24)
     {
-        const t = Math.floor(date/(3600*24*31));
+        const t = Math.round(date/(3600*24*31));
         return t + ' months ago';
     }
-    if (date <= 545*60*60*24)
+    if (date < 545*60*60*24)
     {
         return 'a year ago';
     }
     if ( 545*60*60*24 < date)
     {
-        const t = Math.floor(date/(3600*24*365));
+
+        const t = Math.round(date/(3600*24*365));
         return t + ' years ago';
     }
     return undefined;
