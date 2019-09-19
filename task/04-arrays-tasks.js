@@ -638,7 +638,7 @@ function swapHeadAndTail(arr) {
   const head = arr.substring(Math.round(arr.length/2), arr.length);
   return arr.length%2 != 0 
          ? head.concat(arr.charAt(Math.floor(arr.length/2))).concat(tail) 
-         : head.concat(t).concat(tail);
+         : head.concat(tail);
 }
 
 
