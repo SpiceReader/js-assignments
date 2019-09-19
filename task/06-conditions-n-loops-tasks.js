@@ -588,7 +588,7 @@ function timespanToHumanString(startDate, endDate) {
     }
     if (date <= 45*60)
     {
-        const t = Math.round(date/60);
+        const t = Math.floor(date/60);
         return  t +' minutes ago';
     }
     if (date <= 90*60)
@@ -597,7 +597,7 @@ function timespanToHumanString(startDate, endDate) {
     }
     if (date <= 22*60*60)
     {
-        const t = Math.round(date/3600);
+        const t = Math.floor(date/3600);
         return t + ' hour ago';
     }
     if (date <= 36*60*60)
@@ -615,7 +615,7 @@ function timespanToHumanString(startDate, endDate) {
     }
     if (date <= 345*60*60*24)
     {
-        const t = Math.round(date/(3600*24*31));
+        const t = Math.floor(date/(3600*24*31));
         return t + ' months ago';
     }
     if (date <= 545*60*60*24)
@@ -624,7 +624,7 @@ function timespanToHumanString(startDate, endDate) {
     }
     if ( 545*60*60*24 < date)
     {
-        const t = Math.round(date/(3600*24*31*12));
+        const t = Math.floor(date/(3600*24*365));
         return t + ' years ago';
     }
     return undefined;
