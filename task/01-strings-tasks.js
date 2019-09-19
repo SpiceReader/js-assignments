@@ -270,16 +270,26 @@ function encodeToRot13(str) {
         for (let n = 0; n<str2.length; n++) 
         {
             if(str[i] == str2[n])
-            {
-                temp = temp + str3[n];
+            {               
+                    temp = temp + str3[n];                
             }
             else if (str[i] == str3[n])
+            {               
+                    temp = temp + str2[n];            
+            }
+            else if (str[i] == str2[n].toUpperCase())
             {
-                temp = temp + str2[n];
+                temp = temp + str3[n].toUpperCase();
+            }
+            else if (str[i] == ' ' || str[i] == '?' || str[i] == '!' 
+                     || str[i] == '.' || str[i] == ',') 
+            {
+                temp = temp + str[i];
+                break;
             }
         }
     }
-    return temp.toString();  
+    return temp;  
 }
 
 /**
