@@ -39,7 +39,8 @@ function Rectangle(width, height) {
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
 function getJSON(obj) {
-    throw new Error('Not implemented');
+    const JSONrepresentation = JSON.stringify(obj);
+    return JSONrepresentation;
 }
 
 
