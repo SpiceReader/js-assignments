@@ -23,7 +23,7 @@
  *    console.log(r.getArea());   // => 200
  */
 function Rectangle(width, height) {
-    let RectangleObj = { width:width, height:height};
+    let RectangleObj = { width:width, height:height, getArea() {return height*width}};
     return RectangleObj;
 }
 
